@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otanjoubi Omedetou</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css " rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- Include a required theme -->
+    <link rel="stylesheet" href="@sweetalert2/themes/bulma/bulma.css">
+    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: "Nunito", sans-serif;
+            color: #5a5f70;
+        }
+
+        h1 {
+            font-family: "Nunito", Sans-serif;
+            font-size: 80px;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1em;
+        }
+
+        p {
+            font-weight: 400;
+        }
+
+        h2,
+        h3 {
+            font-weight: 800;
+        }
+
+        .emoji {
+            display: none;
+            padding: 1rem;
+        }
+
+        .emoji span {
+            font-size: 4rem;
+            padding: 0 .5rem;
+        }
+
+        li {
+            display: inline-block;
+            font-size: 1.5em;
+            list-style-type: none;
+            padding: 1em;
+            text-transform: uppercase;
+        }
+
+        li span {
+            display: block;
+            font-size: 5rem;
+        }
+
+        #primary-slider {
+            margin-bottom: 20px;
+        }
+
+        #primary-slider .splide__list {
+
+            margin-bottom: 20px;
+        }
+
+        .splide__track--fade>.splide__list>.splide__slide.is-active {
+            border-radius: 20px;
+        }
+
+        .splide__slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            width: 580px;
+            overflow: hidden;
+        }
+
+        .splide__slide img {
+            width: auto;
+            height: auto;
+            margin: auto;
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .wrapper-cake {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-cake {
+            position: relative;
+        }
+
+
+        .bdayCake {
+            position: relative;
+            left: -100px;
+            top: 100px;
+        }
+
+        .plate {
+            position: absolute;
+            width: 242px;
+            height: 10px;
+            border-radius: 10px;
+            background-color: #2a9d8f;
+        }
+
+        .plate:before {
+            content: "";
+            position: absolute;
+            width: 195px;
+            height: 90px;
+            background-color: #9c6644;
+            top: -90px;
+            left: 25px;
+        }
+
+        .plate:after {
+            content: "";
+            position: absolute;
+            width: 195px;
+            left: 25px;
+            height: 10px;
+            background-color: #ffd166;
+            top: -60px;
+            box-shadow: 0px 25px #f4978e;
+        }
+
+        .cream {
+            position: absolute;
+            background-color: #f08080;
+            width: 195px;
+            height: 20px;
+            left: 25px;
+            top: -110px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .cream:before {
+            content: "";
+            position: absolute;
+            background-color: #f08080;
+            width: 15px;
+            height: 30px;
+            top: 10px;
+            border-radius: 20px;
+            box-shadow: 15px 5px #9c6644, 30px -5px #f08080, 45px 0px #9c6644, 60px 4px #f08080, 75px 3px #9c6644, 90px -5px #f08080, 105px 5px #9c6644, 120px -5px #f08080, 135px 0px #9c6644, 150px 4px #f08080, 165px 0px #9c6644, 180px 3px #f08080;
+        }
+
+        .cream:after {
+            position: absolute;
+            content: "";
+            background-color: rgba(0, 0, 0, 0.1);
+            width: 97.5px;
+            height: 110px;
+            left: 98px;
+            border-radius: 0 20px 0 0;
+        }
+
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background: repeating-linear-gradient(#fae0e4,
+                    #fae0e4 5px, #ff0a54 5px, #ff0a54 10px);
+            box-shadow: inset -5px 0px rgba(0, 0, 0, 0.1);
+            top: -150px;
+            left: 118px;
+        }
+
+        .candle:before {
+            content: "";
+            position: absolute;
+            background-color: #333;
+            width: 2px;
+            height: 10px;
+            top: -10px;
+            left: 4px;
+        }
+
+        .candle:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #fcca46;
+            border-radius: 80% 15% 55% 50% / 55% 15% 80% 50%;
+            box-shadow: inset -3px 3px #fe7f2d;
+            transform: rotate(-45deg);
+            top: -28px;
+            left: -5px;
+            opacity: 0.9;
+            animation: scale .5s ease-out infinite;
+        }
+
+        @keyframes scale {
+            0% {
+                transform: scaleY(1) rotate(-45deg);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scaleY(0.9) rotate(-45deg);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scaleY(1) rotate(-45deg);
+                opacity: 0.9;
+            }
+        }
+
+        .flame {
+            position: absolute;
+        }
+
+        .flame:before {
+            content: "";
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.1);
+            height: 10px;
+            width: 118px;
+            border-radius: 0 10px 10px 0;
+            top: 0;
+            left: 123px;
+        }
+
+        .one {
+            position: absolute;
+            color: #fcca46;
+            font-size: 20px;
+            top: -160px;
+            left: 100px;
+            text-shadow: 33px -30px #fcca46;
+            animation: flash .5s ease infinite alternate;
+        }
+
+        .two {
+            position: absolute;
+            color: #fcca46;
+            font-size: 15px;
+            top: -180px;
+            left: 100px;
+            text-shadow: 35px 30px #fcca46;
+            animation: flash .8s ease infinite alternate;
+        }
+
+        .three {
+            position: absolute;
+            color: #fcca46;
+            font-size: 10px;
+            top: -195px;
+            left: 110px;
+            text-shadow: 30px 30px #fcca46;
+            animation: flash .4s ease infinite alternate;
+        }
+
+        @keyframes flash {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+
+
+
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .image-item img {
+            width: 100%;
+            border-radius: 5px;
+            max-width: 175px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .image-item img:hover {
+            transform: scale(0.97);
+        }
+
+        .modal {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.25s linear;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            -webkit-backdrop-filter: blur(7px);
+            backdrop-filter: blur(7px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 5px;
+        }
+
+        .close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            padding: 0px 0px 6px 0px;
+            top: 35px;
+            right: 35px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        button {
+            background: none;
+            border: none;
+        }
+
+        .close:hover {
+            transform: scale(0.9);
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            white-space: pre-line;
+            text-align: center;
+            color: #ccc;
+            padding: 25px 0px 42px 0px;
+            height: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s;
+        }
+
+
+        .fig {
+            display: grid;
+            grid-template-columns: repeat(2, 2fr);
+            grid-auto-rows: auto;
+            grid-auto-flow: dense;
+            justify-items: stretch;
+            align-items: stretch;
+            gap: 2svmin;
+        }
+
+        .fig img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        @media (min-width:500px) {
+            .fig {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fig img:nth-of-type(11) {
+                grid-row: span 2 / auto;
+            }
+        }
+
+        @media (min-width:1000px) {
+            .fig {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1svmin;
+            }
+
+            .fig img:where(:nth-of-type(3), :nth-of-type(12)) {
+                grid-row: span 2 / auto;
+                grid-column: span 2 / auto;
+            }
+
+            .fig img:nth-of-type(5) {
+                grid-column: span 2 / auto;
+            }
+
+            .fig img:nth-of-type(15) {
+                grid-column: span 2 / auto;
+            }
+        }
+    </style>
+
+    <section id="hero" class="w-100" style="background: url('assets/img/hero.jpg'); height: 100vh;">
+        <div class="d-flex justify-content-center w-100 "
+            style="align-items: center;height: 950px;flex-direction: column;gap: 80px;">
+            <div>
+                <div class="d-flex gap-3" style="width: 50%;height: 100px;">
+                    <div style="flex:1">
+                        <h1 style="color:white;font-size: 66px;">HAPPY </h1>
+                        <h1 style="color: #7e38ed;font-size: 66px;">BIRTHDAY</h1>
+                    </div>
+                    <div style="flex:1">
+                        <h1 style="color:white;font-size: 160px;">CIPAAA</h1>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex;width: 100%; justify-content: center;">
+                <div class="d-flex gap-3" style="width: 50%;height: 200px;justify-content: center;">
+                    <p style="color:white;text-align: justify;">Pertama Selamat ulang tahun cipaaa Cieee sekarang udah
+                        18 taun, udah nambah tuaaa kamu nanti lebih tinggi dari aku gera akumah tetap kaya bocil pendek
+                        dan juga tidak berisi, tau gak aku punya banyak harapan buat kamu mulai dari jangan malesssss
+                        kalau belajar soalnya partner aku itu harus punya semangat buat terus belajar apalagi kamu
+                        bentar lagi SNBT tentunya itu harus belajar biar gak pusing nanti pas mengerjakannya, tenang aja
+                        aku disini all role kok bisa jadi chef, dosen, customer service, partner, pembalap, tukang
+                        ngagetin, pengantar paket, dokter, dan masih banyak yang lainnya ~ soalnya aku punya bakat
+                        terpendam WAKAKAKAKAKA udah dulu ges nanti belum waktunya wish inimah tunggu dibawah dan yaa
+                        inilah Introduction dari aku buat kamu cipaaa</p>
+
+
+                </div>
+            </div>
+            <div>
+                <img src="assets/img/hero-cipa.jpg" style="width: 300px;border: 10px solid white; border-radius: 15px;"
+                    alt="">
+            </div>
+        </div>
+    </section>
+
+    <section id="countdown">
+        <div class="container" style="padding: 100px;">
+            <center>
+                <h3 id="headline">🥳 Countdown to cipa birthday 🎉</h3>
+                <div id="countdown">
+                    <ul>
+                        <li><span id="days"></span>days</li>
+                        <li><span id="hours"></span>Hours</li>
+                        <li><span id="minutes"></span>Minutes</li>
+                        <li><span id="seconds"></span>Seconds</li>
+                    </ul>
+                </div>
+                <div id="content" class="emoji">
+                    <span>🥳</span>
+                    <span>🎉</span>
+                    <span>🎂</span>
+                </div>
+            </center>
+        </div>
+    </section>
+
+    <section id="">
+        <div style="display: flex;width:70%;margin: auto;padding: 100px;gap: 100px;">
+            <div>
+                <p class="text-info" style="line-height: -10px;font: bold;">Tentang Cipa</p>
+                <h2>🎂 Syifa Fauziah Azzahra </h2>
+                <p style="text-align: justify;">
+                    Walau dia lebih tinggi dari aku tapi otaknya kaya bocah ya ges ya mulai dari batu hingga kertas eh
+                    maksudnya hingga ngeselin tapi tenang kok banyak sisi positif dari dia mulai dari care, penyabar,
+                    dan juga selalu ada buat aku, jadi aku ga pernah merasa sendiri dan juga aku ga pernah merasa
+                    kesepian, dia itu partner yang selalu ada buat aku dan juga dia itu partner yang selalu bisa aku
+                    andalkan, jadi aku ga pernah merasa sendiri dan juga aku ga pernah merasa kesepian, dia itu partner
+                    yang selalu ada buat aku dan juga dia itu partner yang selalu bisa aku andalkan HEHEHE SEMOGA BENAR
+                    !
+                </p>
+            </div>
+            <div>
+                <img src="assets/img/char.png"
+                    style="width: 400px;border-radius: 15px; border: 10px solid #d6dbe2 ;transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;"
+                    alt="">
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <section id="gallery" style="background: #252935;padding: 100px;">
+        <div class="d-flex" style="width: 65%; margin: auto;">
+            <div style="flex: 1;">
+                <div id="primary-slider" class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <img src="assets/img/1.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/2.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/3.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/4.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/5.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/6.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/7.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/8.jpg">
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="secondary-slider" class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <img src="assets/img/1.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/2.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/3.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/4.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/5.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/6.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/7.jpg">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/8.jpg">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="flex:1;padding: 50px;">
+                <h2 style="color: white;">💘 Reksa & Cipa </h2>
+                <p style="color: white;text-align: justify;">
+                    Jadi ini gaes namanya Reksa Prayoga Syahputra, dan ini adalah Syifa Fauziah Azzahra. Kami adalah
+                    partner yang selalu menyelesaikan semua masalah dengan logika pemrograman dan tentunya kami
+                    menyelesaikan masalah kami secara struktur dan sistematis biar nanti hasilnya efisien hehehe :v
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="history">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div class="container">
+            <div class="d-flex" style="gap: 100px;">
+                <div style="flex:3;">
+                    <br>
+                    <h3>
+                        🐬 This is Cipaaa !
+                    </h3>
+                    <br>
+                    <br>
+                    <p>
+                        Liatttt gallery ini cantik kan dia, iyaa dong kan cipa itu primadona disekolah HAHAHAHA banyak
+                        banget yang suka akumah apa atuh cuman wibu yang suka maen game dan mengoding saja ~ v~
+                    </p>
+                    <br>
+                    <br>
+                    <figure class="fig">
+                        <img style="border-radius: 10px;" src="assets/img/cipa1.jpg">
+                        <img style="border-radius: 10px;" src="assets/img/cipa5.jpg">
+                        <img style="border-radius: 10px;" src="assets/img/cipa3.jpg">
+                        <img style="border-radius: 10px;" src="assets/img/cipa4.jpg">
+                        <img style="border-radius: 10px;" src="assets/img/cipa2.jpg">
+                        <img style="border-radius: 10px;" src="assets/img/cipa7.jpg">
+                        <img style="border-radius: 10px;" src="assets/img/cipa8.jpg">
+                        <img style="border-radius: 10px;" src="assets/img/cipa6.jpg">
+
+                    </figure>
+
+                </div>
+                <div style="flex:1;">
+                    <video width="400px" height="800px"
+                        style="border-radius:30px;border:1px solid black;object-fit: fill;"
+                        poster="assets/img/placeholder.jpg" controls>
+                        <source src="assets/video/video1.mp4" type="video/mp4">
+                        <source src="assets/video/video1.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </section>
+
+    <section id="list-hope" style="background: #8638ed;padding: 100px;">
+        <center>
+            <h2 style="color: white;">😇 Semoga yang Disemogakan Tersemogakan ! 💫</h2>
+        </center>
+        <br>
+        <br>
+        <center> <img src="assets/img/wish.jpg" alt=""
+                style="width: 800px;height: 500px;object-fit: cover;border-radius: 15px;">
+        </center>
+        <br>
+        <br>
+        <div class="container">
+            <div class="d-flex" style="gap: 100px;">
+                <div style="flex: 1;">
+                    <h2 style="color: white;">📚 Knowledge is Important</h2>
+                    <p style="color: white;text-align: justify;">
+                        Seperti yang pertama tadi ya cipa, jangan lupa untuk selalu belajar dan juga jangan lupa untuk
+                        selalu berusaha,karena usaha itu bakal selaras dengan hasil yang kamu dapatkan, ingat di dunia
+                        ini gaada yang mudah jadi keep spirit and keep fighting kita ini adalah superman yang menjelma
+                        jadi manusia ~ v~
+
+                    </p>
+                </div>
+                <div style="flex: 1;">
+                    <h2 style="color: white;">💻 New Age New Logic</h2>
+                    <p style="color: white;text-align: justify;"> Kedua kalau nambah tua harus dewasa dan tentunya harus
+                        semakin mengerti manusia seperti apa, nanti kamu bakal nemuin makhluk mahkluk aneh di dunia ini
+                        tapi kamu harus punya pegangan dan tentunya tau mana yang bener mana yang ngga, ingat skala
+                        prioritas dan juga pros and const seperti rumus dari aku insya allah itu bakal bisa buat kamu
+                        jadi orang yang lebih baik dari hari ke hari walaupun emang itu susah sihhh.
+                    </p>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="d-flex" style="gap: 100px;">
+                <div style="flex: 1;">
+                    <h2 style="color: white;">💪🏻 An Effort</h2>
+                    <p style="color: white;text-align: justify;"> Ketiga ingat kamu punya usaha sendiri jadi jangan lupa
+                        untuk selalu berusaha dan berdoa, jangan lupa untuk selalu bersyukur dan juga jangan lupa untuk
+                        selalu berbagi, ingat ya cipa jangan lupa untuk selalu berbagi karena dengan berbagi itu kita
+                        bisa jadi orang yang lebih baik dan juga bisa jadi orang yang lebih berkah, jangan lupa untuk
+                        selalu berbagi ke orang yang membutuhkan dan juga jangan lupa untuk selalu berbagi ke orang yang
+                        tidak membutuhkan.
+                    </p>
+                </div>
+                <div style="flex: 1;">
+                    <h2 style="color: white;">💕 Beloved</h2>
+                    <p style="color: white;text-align: justify;">Ketiga tau gak sih kamu teh, aku sayangggggggg
+                        bangetttttttttt ama kamu jadi apapun yang terjadi, jadi usahakan nurut kalau ada apa apa teh
+                        mulai dari belajar, cerita ke aku sampai ke kalau ada masalah ya kita solving bareng bareng kita
+                        itu grow up bareng gak cuman individual dan itu yang bedain kita sama yang lain jadiiiiiiiii
+                        positive partner </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <section id="cake" class="wrapper-cake">
+        <div class="container-cake">
+            <div class="bdayCake">
+                <div class="plate"></div>
+                <div class="cream"></div>
+                <div class="candle"></div>
+                <div class="flame">
+                    <div class="one">+</div>
+                    <div class="two">+</div>
+                    <div class="three">+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <p style="margin-left: 60px;">Tiup lilinya heyyy biar harapannya terkabul ~</p>
+    </center>
+
+    <br>
+    <br>
+    <br>
+    <br>s
+
+
+    <section id="quote" style="padding: 50px;display: flex;width: 100%;justify-content: end;">
+        <figure class="text-end " style="width: 500px;">
+            <blockquote class="blockquote">
+                <p style="text-align: justify;">Ulang tahun adalah momen yang spesial di mana kita merayakan kehadiran
+                    seseorang dalam hidup kita. Semoga kamu dikelilingi oleh cinta dan kebahagiaan di hari istimewa ini.
+                </p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                Edward Elric, <cite title="Source Title">Fullmetal Alchemist</cite>
+            </figcaption>
+        </figure>
+    </section>
+
+    <section id="footer" style="background-color: #252935;padding: 20px;">
+        <br>
+        <center>
+            <p style="color: white;">Made with ❤️ by Reksa Prayoga Syahputra</p>
+        </center>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+    <script type="module" src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js "></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@4/bulma.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    <script>
+        function playMusic() {
+            var audio = new Audio('assets/music/eau.mp3');
+            audio.play();
+        }
+
+        function showSwal() {
+            Swal.fire({
+                title: "Siapa kamu 😤 !<br><br> <p style='font-size:16px'>kalau mau masuk masukkan kode nya dalam bentuk angka !</p>",
+                input: "text",
+                inputAttributes: {
+                    autocapitalize: "off"
+                },
+                showCancelButton: false,
+                confirmButtonText: "Look up",
+                allowEscapeKey: false, // Tidak mengizinkan pengguna untuk keluar dengan menekan tombol "Escape"
+                allowOutsideClick: false, // Tidak mengizinkan pengguna untuk keluar dengan mengklik di luar jendela pop-up
+                showLoaderOnConfirm: true,
+                preConfirm: async (login) => {
+                    return login;
+                },
+            }).then((result) => {
+                console.log(result)
+                if (result.isConfirmed) {
+                    if (result.value == "91225317") {
+                        Swal.fire({
+                            title: "Oke kamu benar, tapi saya tidak yakin ini kamu 😠 <br><br>  <p style='font-size:16px'>Siapa nama kamu di kontak ku ? (tanpa emot)</p>",
+                            text: "",
+                            input: "text",
+                            inputAttributes: {
+                                autocapitalize: "off"
+                            },
+                            showCancelButton: false,
+                            confirmButtonText: "Look up",
+                            allowEscapeKey: false, // Tidak mengizinkan pengguna untuk keluar dengan menekan tombol "Escape"
+                            allowOutsideClick: false, // Tidak mengizinkan pengguna untuk keluar dengan mengklik di luar jendela pop-up
+                            showLoaderOnConfirm: true,
+                            preConfirm: async (login) => {
+                                return login;
+                            },
+                        }).then((result) => {
+                            console.log(result)
+                            if (result.isConfirmed) {
+                                var val = result.value;
+                                if (val.toLowerCase() == "cipapau") {
+                                    Swal.fire({
+                                        title: "Oke baiklah kamu memang cipa 🥰 <br><br> <p style='font-size:16px'>Silahkan lanjutkan</p>",
+                                        text: "",
+                                        icon: "success",
+                                        confirmButtonText: "Oke Trimakasihh"
+                                    }).then(function (isConfirm) {
+                                        if (isConfirm) {
+                                            playMusic();
+                                        }
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: "Error",
+                                        text: "Kode yang kamu masukkan salah kamu orang asing 🤬",
+                                        icon: "error",
+                                        confirmButtonText: "Oke maaf akan ku coba lagi"
+                                    }).then(() => {
+                                        showSwal
+                                            (); // Memanggil kembali fungsi showSwal() untuk menampilkan jendela pop-up kembali
+                                    });
+                                }
+                            }
+                        });
+
+
+                    } else {
+                        Swal.fire({
+                            title: "Error",
+                            text: "Kode yang kamu masukkan salah kamu orang asing 🤬",
+                            icon: "error",
+                            confirmButtonText: "Oke maaf akan ku coba lagi"
+                        }).then(() => {
+                            showSwal
+                                (); // Memanggil kembali fungsi showSwal() untuk menampilkan jendela pop-up kembali
+                        });
+                    }
+                }
+            });
+        }
+
+        // Memanggil fungsi showSwal() saat halaman dimuat
+        showSwal();
+    </script>
+
+    <script>
+        // Create and mount the thumbnails slider.
+        var secondarySlider = new Splide('#secondary-slider', {
+            rewind: true,
+            fixedWidth: 60,
+            fixedHeight: 64,
+            isNavigation: true,
+            gap: 10,
+            focus: 'center',
+            pagination: false,
+            cover: true,
+            breakpoints: {
+                '600': {
+                    fixedWidth: 66,
+                    fixedHeight: 40,
+                }
+            }
+        }).mount();
+
+        // Create the main slider.
+        var primarySlider = new Splide('#primary-slider', {
+            type: 'fade',
+            // heightRatio: 0.5,
+            pagination: false,
+            arrows: false,
+            cover: true,
+
+        });
+
+        // Set the thumbnails slider as a sync target and then call mount.
+        primarySlider.sync(secondarySlider).mount();
+    </script>
+
+    <script>
+        (function () {
+            const second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
+
+            //I'm adding this section so I don't have to keep updating this pen every year :-)
+            //remove this if you don't need it
+            let today = new Date(),
+                dd = String(today.getDate()).padStart(2, "0"),
+                mm = String(today.getMonth() + 1).padStart(2, "0"),
+                yyyy = today.getFullYear(),
+                nextYear = 2024,
+                dayMonth = "04/17/",
+                birthday = dayMonth + nextYear;
+
+            today = mm + "/" + dd + "/" + yyyy;
+            if (today > birthday) {
+                birthday = dayMonth + nextYear;
+            }
+            //end
+
+            const countDown = new Date(birthday).getTime(),
+                x = setInterval(function () {
+
+                    const now = new Date().getTime(),
+                        distance = countDown - now;
+
+                    document.getElementById("days").innerText = Math.floor(distance / (day)),
+                        document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                        document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (
+                            minute)),
+                        document.getElementById("seconds").innerText = Math.floor((distance % (minute)) /
+                            second);
+
+                    //do something later when date is reached
+                    if (distance < 0) {
+                        document.getElementById("headline").innerText = "It's my birthday!";
+                        document.getElementById("countdown").style.display = "none";
+                        document.getElementById("content").style.display = "block";
+                        clearInterval(x);
+                    }
+                    //seconds
+                }, 0)
+        }());
+    </script>
+
+    <script>
+        window.onload = function () {
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
+                .userAgent);
+            if (isMobile) {
+                alert("Maaf, website ini hanya dapat diakses melalui PC.");
+                // Redirect to another page or take any other action as needed
+                // window.location.href = "https://example.com";
+            }
+        };
+    </script>
+</body>
+
+</html>
